@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://den-43.github.io/xinjing-studio/sitemap.xml
