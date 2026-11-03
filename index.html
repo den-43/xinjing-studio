@@ -1,0 +1,321 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>心镜 XinJing · 不是算命，是照心 — Mind-Mirror Reflection</title>
+<meta name="description" content="心镜观照法（XinJing Mind-Mirror Method）：用真实出生星图与紫微命盘当镜子，融合阳明心学、佛、道、西洋星象与紫微斗数、色彩，照见心情/爱情/事业，并落到今天能做的一个动作。不预测事件，不诊断，不制造依赖。">
+<meta name="keywords" content="心镜,XinJing,阳明心学,心即理,致良知,出生星盘,紫微斗数,ziwei,Ziwei Doushu,purple star astrology,心性观照,色彩心理,mind-mirror,Wang Yangming,natal chart,reflection">
+<link rel="canonical" href="https://workbuddy.link/p/YCFLmTTfBZVVp4uozLuhlW">
+<meta property="og:title" content="心镜 XinJing · 不是算命，是照心">
+<meta property="og:description" content="用真实的出生星图与紫微命盘当镜子。象是镜子，不是判决书。双镜观照：西洋星象 + 紫微斗数。">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "XinJing Studio", "applicationCategory": "LifestyleApplication", "operatingSystem": "macOS, Linux, Windows", "description": "A mind-mirror reflection skill: real birth chart + Wang Yangming philosophy + Buddhist/Daoist framing + colour, ending in one action you can take today.", "offers": {"@type": "Offer", "price": "1.99", "priceCurrency": "CNY"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the XinJing Mind-Mirror Method?", "acceptedAnswer": {"@type": "Answer", "text": "A reflection method that uses a real birth chart as a mirror (not a verdict): the chart shows structure, Wang Yangming's philosophy returns agency, and each session ends in one action you can take today. It predicts no events and gives no unchangeable conclusion."}}, {"@type": "Question", "name": "Is XinJing fortune-telling?", "acceptedAnswer": {"@type": "Answer", "text": "No. It forbids event or date prediction, forbids words like disaster, ruin or malefic aspects, forbids diagnosis, and forbids creating dependency. It speaks only of the present moment."}}, {"@type": "Question", "name": "Which traditions does it combine?", "acceptedAnswer": {"@type": "Answer", "text": "Wang Yangming's philosophy (bone), Buddhism — suffering, clinging, impermanence, compassion only, no karma or past lives (mirror), Daoism — yin-yang, subtracting from excess (current), astrology (image), and colour theory (body-level action)."}}, {"@type": "Question", "name": "What does it output?", "acceptedAnswer": {"@type": "Answer", "text": "A six-step session: Receive, Settle, Image, Heart (mood / love / work), Reason (one question of innate knowing, then silence), Act (one action today), plus three colours: native colour, present supplement colour, one usable colour today."}}, {"@type": "Question", "name": "Does XinJing use Ziwei Doushu (Purple Star Astrology)?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, as a second mirror. Both the Western natal chart and a Ziwei Doushu chart are used as objective imagery only — never as verdicts. The Ziwei engine is built on iztro with Renhuai123's corrections, and any recognised pattern (e.g. 杀破狼, 机月同梁) is used as neutral imagery, never as a fixed destiny. The red lines (no prediction, no diagnosis, no dependency) apply to both."}},{"@type": "Question", "name": "Does it handle crisis?", "acceptedAnswer": {"@type": "Answer", "text": "No. If someone expresses thoughts of self-harm, all interpretation stops immediately and local crisis-line information is given."}}]}</script>
+<style>
+:root{
+  --bg:#0a1419; --bg2:#0e2128; --card:rgba(20,38,44,.72); --line:rgba(127,214,196,.18);
+  --ink:#eaf4f2; --sub:#9fc0bd; --acc:#7fd6c4; --acc2:#e8b04b; --warn:#ef9a8a; --soft:#bfe3da;
+  --shadow:0 18px 50px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans","Noto Sans CJK",sans-serif;
+  color:var(--ink);line-height:1.78;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(900px 480px at 82% -10%,rgba(127,214,196,.16),transparent 60%),
+    radial-gradient(700px 420px at 10% 8%,rgba(232,176,75,.10),transparent 55%),
+    linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+  background-attachment:fixed;min-height:100vh;
+}
+a{color:var(--acc);text-decoration:none}
+.wrap{max-width:920px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
+  background:rgba(10,20,25,.66);border-bottom:1px solid var(--line);padding:14px 0}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-weight:800;letter-spacing:.5px;font-size:18px;
+  background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.langs{display:flex;gap:8px;flex-wrap:wrap}
+.langs button{background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--sub);
+  border-radius:99px;padding:6px 13px;cursor:pointer;font:inherit;font-size:13px;transition:.2s}
+.langs button:hover{border-color:var(--acc);color:var(--ink)}
+.langs button.on{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#06201c;border-color:transparent;font-weight:700}
+section{padding:54px 0}
+.hero{padding:64px 0 30px;text-align:center}
+.tag{display:inline-block;font-size:12.5px;color:var(--acc);border:1px solid var(--line);
+  border-radius:99px;padding:5px 14px;margin-bottom:22px;letter-spacing:1px}
+h1{font-size:clamp(34px,6vw,56px);line-height:1.18;margin-bottom:18px;font-weight:850;
+  background:linear-gradient(120deg,#eaf4f2 0%,var(--acc) 55%,var(--acc2) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--sub);font-size:clamp(16px,2.4vw,19px);max-width:640px;margin:0 auto 30px}
+.cta{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:15px;transition:.2s}
+.btn.primary{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#06201c;box-shadow:0 10px 30px rgba(127,214,196,.28)}
+.btn.primary:hover{transform:translateY(-2px)}
+.btn.ghost{border:1px solid var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:var(--acc)}
+h2{font-size:clamp(24px,4vw,32px);margin-bottom:8px;font-weight:800}
+.lead{color:var(--sub);max-width:640px;margin:0 auto 34px}
+/* 双镜 */
+.mirrors{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:10px}
+.mirror{position:relative;border-radius:18px;padding:30px 24px;text-align:center;overflow:hidden;
+  border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow)}
+.mirror::before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;top:-70px;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(127,214,196,.28),transparent 70%)}
+.mirror.west::before{background:radial-gradient(circle,rgba(232,176,75,.26),transparent 70%)}
+.mirror h3{position:relative;font-size:20px;margin-bottom:8px}
+.mirror p{position:relative;color:var(--sub);font-size:14.5px}
+/* 卡片 */
+.cards{display:grid;gap:16px}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.cards.c5{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.card h3{font-size:17px;margin-bottom:8px;color:var(--soft)}
+.card p{color:var(--sub);font-size:14.5px}
+/* 步骤 */
+.steps{counter-reset:s;display:grid;gap:14px;margin-top:6px}
+.step{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+.step::before{counter-increment:s;content:counter(s);flex:0 0 34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;font-weight:800;color:#06201c;background:linear-gradient(135deg,var(--acc),var(--acc2))}
+.step div{font-size:15.5px}
+/* 学校 grid */
+.school{border-left:3px solid var(--acc);padding-left:16px}
+/* 价格 */
+.price{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch}
+.pcard{background:linear-gradient(160deg,rgba(127,214,196,.12),rgba(20,38,44,.8));border:1px solid var(--acc);
+  border-radius:20px;padding:30px;box-shadow:var(--shadow)}
+.pcard .big{font-size:30px;font-weight:850;margin:6px 0 4px;color:var(--acc2)}
+.pcard .note{color:var(--sub);font-size:14px;margin-top:10px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;word-break:break-all;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--soft)}
+.qrbox{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.qrbox img{width:170px;height:170px;border-radius:12px;background:#fff;padding:8px}
+.qrbox small{color:var(--sub);font-size:12.5px}
+/* FAQ */
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--acc);font-size:20px;font-weight:700}
+.faq details[open] summary::after{content:"–"}
+.faq p{padding:0 0 16px;color:var(--sub);font-size:14.5px}
+/* 危机 / 红线 */
+.crisis{background:rgba(239,154,138,.10);border:1px solid rgba(239,154,138,.35);border-radius:16px;padding:20px 22px;color:var(--warn);font-size:14.5px}
+.red{margin-top:18px;color:var(--sub);font-size:13.5px;text-align:center}
+footer{padding:40px 0 60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--line);margin-top:30px}
+.lang-block:not([data-show]){display:none}
+@media(max-width:720px){
+  .mirrors,.price{grid-template-columns:1fr}
+  .cards.c3{grid-template-columns:1fr}
+  section{padding:42px 0}
+}
+</style></head><body>
+<header><div class="wrap bar"><span class="brand">心镜 · XinJing</span><div class="langs" id="langs">
+<button data-lg="zh-CN" class="on">简体</button>
+<button data-lg="zh-TW">繁體</button>
+<button data-lg="en">EN</button>
+<button data-lg="ja">日本語</button>
+<button data-lg="ko">한국어</button>
+</div></div></header>
+<div class="lang-block" data-lang="zh-CN" data-show>
+<section class="hero"><div class="wrap">
+<span class="tag">心镜 · 心性观照</span>
+<h1>不是算命。是照心。</h1>
+<p class="sub">用一张真实的出生星图当镜子，把你现在的心情、爱情、事业，看清楚一点点。然后给你一个今天就能做的动作。</p>
+<div class="cta"><a class="btn primary" href="https://workbuddy.link/p/YCFLmTTfBZVVp4uozLuhlW">免费自测（只需出生日期）</a><a class="btn ghost" href="#pricing">价格</a></div>
+</div></section>
+<section><div class="wrap"><h2 style="text-align:center">五家分工 · 一段话只让一家说话</h2><div class="mirrors"><div class="mirror west"><h3>🌍 西洋星盘</h3><p>行星 · 宫位 · 相位 · 行运<br>Swiss Ephemeris 真实计算</p></div><div class="mirror"><h3>☯ 紫微斗数</h3><p>十二宫 · 十四主星 · 四化<br>iztro 内核 · 中性意象</p></div></div></div></section>
+<section><div class="wrap"><div class="cards c3">
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">象是镜子，不是判决书。</p></div>
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">心镜观照法：先用星象照见结构（象），再用阳明心学把主动权交还给你（心），最后落到一个今天能做的动作（行）。</p></div>
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">它不预测事件，不给你一个不可改变的结论。它只回答一个问题：此刻，你的心在哪里。</p></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="text-align:center">六步 · 一次完整的观照</h2><p class="lead" style="text-align:center"></p><div class="steps">
+<div class="step"><div>收：听你说完，不急着归类。</div></div>
+<div class="step"><div>起·定：先安顿，再开口。</div></div>
+<div class="step"><div>观·象：星图作为客观结构。</div></div>
+<div class="step"><div>照·心：心情 / 爱情 / 事业，各走「象 → 心 → 一句点破」。</div></div>
+<div class="step"><div>明·理：致良知一问，问完闭嘴。</div></div>
+<div class="step"><div>行·合：一个今天能做的动作。</div></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="text-align:center">五家分工 · 一段话只让一家说话</h2><div class="cards c5">
+<div class="card school"><h3>骨 · 阳明</h3><p>致良知、知行合一。负责把主动权交还给你。</p></div>
+<div class="card school"><h3>镜 · 佛</h3><p>苦与执、无常、慈悲。不谈业报与前世。</p></div>
+<div class="card school"><h3>势 · 道</h3><p>阴阳消长、损有余补不足。落点是减，不是加。</p></div>
+<div class="card school"><h3>象 · 星盘 / 紫微</h3><p>客观结构：星图与紫微命盘，不是命运。</p></div>
+<div class="card school"><h3>色 · 色彩</h3><p>身体层的落点：穿、桌面、屏、食、光。</p></div>
+</div></div></section>
+<section id="pricing"><div class="wrap"><h2 style="text-align:center">价格</h2><div class="price"><div class="pcard"><div style="color:var(--sub);font-size:13px;letter-spacing:1px">价格</div><div class="big">¥1.99 一次性授权 · 买断</div><div class="note">海外：USDT 等值（ERC-20）</div><div class="mono" style="margin-top:12px">0xB811F660A20881b5BBee552085d6ddBE3e370E1a</div><div class="note">付款后运行 activate.py，贴入凭证（tx hash 或微信订单号），本地写入授权文件即可解锁。不碰私钥、不联网收银。</div></div><div class="qrbox"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeAQMAAABoqSz0AAAABlBMVEUbKy7///86NKudAAABOElEQVR42u1YwQ0DIQyLygCMxOqMxABIaRyH/tpvfRLohILysSyfYzD/vrbd5m3qNg1ruE9f3HFu0XzZj/WPJtAGMOK0PqNuqF0X7bJAmJiNaINqcbSBcPe5QxJPQHsYnurcpm551NctPSHp5SftCVwwhMNq2ZuqbtNvPf4yFJ+jJrcr9kkZfApZJexQaWl1po85JprsX9YhWoIM2FHAx6T9lt5lu2aEKes26N0ICZUTmrASwCS9a6GIo3UX55ZQ/ehWl1tCzcSYunXlWQZiSwZFclPOt0zjdXFAAFPWLSJi92K1al3dtjMUwg1Ctxxqrp3BjlxhuVSycr7NS9k8qcZc/O6AfFtuIJ8TBp8UaLbS7wkHbdrCyDymz60x1voTdLvzVk6/lU7j6Qnk9uxD3G/vu+ZtPqf5BnoCGUMH0oCIAAAAAElFTkSuQmCC" alt="WeChat Pay QR"><div><b>微信支付</b></div><small>微信 → 我 → 服务 → 收付款 → 二维码收款，保存静态码。</small></div></div></div></section>
+<section class="faq"><div class="wrap"><h2 style="text-align:center">常见问题</h2>
+<details><summary>这和算命有什么不同？</summary><p>算命给你一个不可改变的结论，心镜给你一个可以行动的位置。它不预测事件与日期，只说「象如此，心如何」，并把决定权还给你。</p></details>
+<details><summary>要提供出生时间吗？</summary><p>想看完整结构（上升、月亮、宫位、行运）就需要出生时间与地点。只知道日期也能用，但月亮与上升会不准，页面会如实标注。</p></details>
+<details><summary>会说我「命不好」吗？</summary><p>不会。禁用凶、灾、破财、小人、刑冲克害这类词。星图里没有「坏配置」，只有你还没认领的部分。</p></details>
+<details><summary>能治病吗？</summary><p>不能。这是心性观照，不是医疗、心理治疗或诊断。有持续痛苦请找专业人士。</p></details>
+<details><summary>为什么还要给颜色？</summary><p>因为讲完星象容易飘。颜色让你今天就有事可做：穿什么、桌面上放什么、灯光换成什么。一次只给一个动作。</p></details>
+<details><summary>数据安全吗？</summary><p>非托管：脚本在你本机运行，出生信息不写日志、不外传。</p></details>
+<details><summary>如果我正很难受，能用吗？</summary><p>可以，但请先看这一条：如果你有伤害自己的念头，请立刻联系当地危机热线或去急诊。这套方法不处理危机。</p></details>
+</div></section>
+<section><div class="wrap"><div class="crisis">如果你正在考虑伤害自己：请立即联系当地危机热线（中国大陆 400-161-9995 / 北京 010-82951332，香港 2382-0000，美国 988，日本 0570-783-910）。本页不处理危机。</div><div class="red">红线：不预测具体事件与日期；不诊断疾病；不制造依赖；只谈此刻，不谈前世与业报。</div></div></section>
+</div>
+<div class="lang-block" data-lang="zh-TW">
+<section class="hero"><div class="wrap">
+<span class="tag">心鏡 · 心性觀照</span>
+<h1>不是算命。是照心。</h1>
+<p class="sub">用一張真實的出生星圖當鏡子，把你現在的心情、愛情、事業，看清楚一點點。然後給你一個今天就能做的動作。</p>
+<div class="cta"><a class="btn primary" href="https://workbuddy.link/p/YCFLmTTfBZVVp4uozLuhlW">免費自測（只需出生日期）</a><a class="btn ghost" href="#pricing">價格</a></div>
+</div></section>
+<section><div class="wrap"><h2 style="text-align:center">五家分工 · 一段話只讓一家說話</h2><div class="mirrors"><div class="mirror west"><h3>🌍 西洋星盘</h3><p>行星 · 宫位 · 相位 · 行运<br>Swiss Ephemeris 真实计算</p></div><div class="mirror"><h3>☯ 紫微斗数</h3><p>十二宫 · 十四主星 · 四化<br>iztro 内核 · 中性意象</p></div></div></div></section>
+<section><div class="wrap"><div class="cards c3">
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">象是镜子，不是判决书。</p></div>
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">心镜观照法：先用星象照见结构（象），再用阳明心学把主动权交还给你（心），最后落到一个今天能做的动作（行）。</p></div>
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">它不預測事件，不給你一個不可改變的結論。它只回答一個問題：此刻，你的心在哪裡。</p></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="text-align:center">六步 · 一次完整的觀照</h2><p class="lead" style="text-align:center"></p><div class="steps">
+<div class="step"><div>收：聽你說完，不急著歸類。</div></div>
+<div class="step"><div>起·定：先安頓，再開口。</div></div>
+<div class="step"><div>觀·象：星圖作為客觀結構。</div></div>
+<div class="step"><div>照·心：心情 / 愛情 / 事業，各走「象 → 心 → 一句點破」。</div></div>
+<div class="step"><div>明·理：致良知一問，問完閉嘴。</div></div>
+<div class="step"><div>行·合：一個今天能做的動作。</div></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="text-align:center">五家分工 · 一段話只讓一家說話</h2><div class="cards c5">
+<div class="card school"><h3>骨 · 阳明</h3><p>致良知、知行合一。负责把主动权交还给你。</p></div>
+<div class="card school"><h3>镜 · 佛</h3><p>苦与执、无常、慈悲。不谈业报与前世。</p></div>
+<div class="card school"><h3>势 · 道</h3><p>阴阳消长、损有余补不足。落点是减，不是加。</p></div>
+<div class="card school"><h3>象 · 星盘 / 紫微</h3><p>客观结构：星图与紫微命盘，不是命运。</p></div>
+<div class="card school"><h3>色 · 色彩</h3><p>身体层的落点：穿、桌面、屏、食、光。</p></div>
+</div></div></section>
+<section id="pricing"><div class="wrap"><h2 style="text-align:center">價格</h2><div class="price"><div class="pcard"><div style="color:var(--sub);font-size:13px;letter-spacing:1px">價格</div><div class="big">¥1.99 一次性授權 · 買斷</div><div class="note">海外：USDT 等值（ERC-20）</div><div class="mono" style="margin-top:12px">0xB811F660A20881b5BBee552085d6ddBE3e370E1a</div><div class="note">付款後運行 activate.py，貼入憑證（tx hash 或微信訂單號），本地寫入授權文件即可解鎖。不碰私鑰、不聯網收銀。</div></div><div class="qrbox"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeAQMAAABoqSz0AAAABlBMVEUbKy7///86NKudAAABOElEQVR42u1YwQ0DIQyLygCMxOqMxABIaRyH/tpvfRLohILysSyfYzD/vrbd5m3qNg1ruE9f3HFu0XzZj/WPJtAGMOK0PqNuqF0X7bJAmJiNaINqcbSBcPe5QxJPQHsYnurcpm551NctPSHp5SftCVwwhMNq2ZuqbtNvPf4yFJ+jJrcr9kkZfApZJexQaWl1po85JprsX9YhWoIM2FHAx6T9lt5lu2aEKes26N0ICZUTmrASwCS9a6GIo3UX55ZQ/ehWl1tCzcSYunXlWQZiSwZFclPOt0zjdXFAAFPWLSJi92K1al3dtjMUwg1Ctxxqrp3BjlxhuVSycr7NS9k8qcZc/O6AfFtuIJ8TBp8UaLbS7wkHbdrCyDymz60x1voTdLvzVk6/lU7j6Qnk9uxD3G/vu+ZtPqf5BnoCGUMH0oCIAAAAAElFTkSuQmCC" alt="WeChat Pay QR"><div><b>微信支付</b></div><small>微信 → 我 → 服務 → 收付款 → 二維碼收款，保存靜態碼。</small></div></div></div></section>
+<section class="faq"><div class="wrap"><h2 style="text-align:center">常見問題</h2>
+<details><summary>这和算命有什么不同？</summary><p>算命给你一个不可改变的结论，心镜给你一个可以行动的位置。它不预测事件与日期，只说「象如此，心如何」，并把决定权还给你。</p></details>
+<details><summary>要提供出生时间吗？</summary><p>想看完整结构（上升、月亮、宫位、行运）就需要出生时间与地点。只知道日期也能用，但月亮与上升会不准，页面会如实标注。</p></details>
+<details><summary>会说我「命不好」吗？</summary><p>不会。禁用凶、灾、破财、小人、刑冲克害这类词。星图里没有「坏配置」，只有你还没认领的部分。</p></details>
+<details><summary>能治病吗？</summary><p>不能。这是心性观照，不是医疗、心理治疗或诊断。有持续痛苦请找专业人士。</p></details>
+<details><summary>为什么还要给颜色？</summary><p>因为讲完星象容易飘。颜色让你今天就有事可做：穿什么、桌面上放什么、灯光换成什么。一次只给一个动作。</p></details>
+<details><summary>数据安全吗？</summary><p>非托管：脚本在你本机运行，出生信息不写日志、不外传。</p></details>
+<details><summary>如果我正很难受，能用吗？</summary><p>可以，但请先看这一条：如果你有伤害自己的念头，请立刻联系当地危机热线或去急诊。这套方法不处理危机。</p></details>
+</div></section>
+<section><div class="wrap"><div class="crisis">如果你正在考慮傷害自己：請立即聯繫當地危機熱線（中國大陸 400-161-9995 / 北京 010-82951332，香港 2382-0000，美國 988，日本 0570-783-910）。本頁不處理危機。</div><div class="red">紅線：不預測具體事件與日期；不診斷疾病；不製造依賴；只談此刻，不談前世與業報。</div></div></section>
+</div>
+<div class="lang-block" data-lang="en">
+<section class="hero"><div class="wrap">
+<span class="tag">XinJing · Mind-Mirror</span>
+<h1>Not fortune-telling. Mirror-reading.</h1>
+<p class="sub">A real birth chart, used as a mirror — to see your mood, love and work a little more clearly. Then one action you can take today.</p>
+<div class="cta"><a class="btn primary" href="https://workbuddy.link/p/YCFLmTTfBZVVp4uozLuhlW">Free self-check (birth date only)</a><a class="btn ghost" href="#pricing">Price</a></div>
+</div></section>
+<section><div class="wrap"><h2 style="text-align:center">Five traditions · only one speaks per paragraph</h2><div class="mirrors"><div class="mirror west"><h3>🌍 西洋星盘</h3><p>行星 · 宫位 · 相位 · 行运<br>Swiss Ephemeris 真实计算</p></div><div class="mirror"><h3>☯ 紫微斗数</h3><p>十二宫 · 十四主星 · 四化<br>iztro 内核 · 中性意象</p></div></div></div></section>
+<section><div class="wrap"><div class="cards c3">
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">The chart is a mirror, not a verdict.</p></div>
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">The XinJing Mind-Mirror Method: the chart shows the structure (Image); Wang Yangming&#x27;s philosophy hands the agency back to you (Heart); it ends in one action you can take today (Act).</p></div>
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">It predicts no events. It gives no unchangeable verdict. It answers one question: where is your heart, right now?</p></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="text-align:center">Six steps · one complete session</h2><p class="lead" style="text-align:center"></p><div class="steps">
+<div class="step"><div>Receive: let you finish. Don&#x27;t classify too early.</div></div>
+<div class="step"><div>Settle: calm first, speak second.</div></div>
+<div class="step"><div>Image: the chart as objective structure.</div></div>
+<div class="step"><div>Heart: mood / love / work — each as Image → Heart → one line that lands.</div></div>
+<div class="step"><div>Reason: the one question of innate knowing. Then stop talking.</div></div>
+<div class="step"><div>Act: one thing you can do today.</div></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="text-align:center">Five traditions · only one speaks per paragraph</h2><div class="cards c5">
+<div class="card school"><h3>Bone · Wang Yangming</h3><p>Innate knowing, unity of knowing and acting. Returns the agency to you.</p></div>
+<div class="card school"><h3>Mirror · Buddhism</h3><p>Suffering and clinging, impermanence, compassion. No karma, no past lives.</p></div>
+<div class="card school"><h3>Current · Daoism</h3><p>Yin-yang, subtracting from excess. The landing is less, not more.</p></div>
+<div class="card school"><h3>Image · Astrology + Ziwei</h3><p>Objective structure: natal chart and Ziwei Doushu — not fate.</p></div>
+<div class="card school"><h3>Colour · Chromatics</h3><p>Body-level landing: clothes, desk, screen, food, light.</p></div>
+</div></div></section>
+<section id="pricing"><div class="wrap"><h2 style="text-align:center">Price</h2><div class="price"><div class="pcard"><div style="color:var(--sub);font-size:13px;letter-spacing:1px">Price</div><div class="big">¥1.99 one-time licence</div><div class="note">Overseas: USDT equivalent (ERC-20)</div><div class="mono" style="margin-top:12px">0xB811F660A20881b5BBee552085d6ddBE3e370E1a</div><div class="note">After paying, run activate.py, paste your proof (tx hash or WeChat order number), and a local licence file unlocks it. Non-custodial, no payment processing.</div></div><div class="qrbox"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeAQMAAABoqSz0AAAABlBMVEUbKy7///86NKudAAABOElEQVR42u1YwQ0DIQyLygCMxOqMxABIaRyH/tpvfRLohILysSyfYzD/vrbd5m3qNg1ruE9f3HFu0XzZj/WPJtAGMOK0PqNuqF0X7bJAmJiNaINqcbSBcPe5QxJPQHsYnurcpm551NctPSHp5SftCVwwhMNq2ZuqbtNvPf4yFJ+jJrcr9kkZfApZJexQaWl1po85JprsX9YhWoIM2FHAx6T9lt5lu2aEKes26N0ICZUTmrASwCS9a6GIo3UX55ZQ/ehWl1tCzcSYunXlWQZiSwZFclPOt0zjdXFAAFPWLSJi92K1al3dtjMUwg1Ctxxqrp3BjlxhuVSycr7NS9k8qcZc/O6AfFtuIJ8TBp8UaLbS7wkHbdrCyDymz60x1voTdLvzVk6/lU7j6Qnk9uxD3G/vu+ZtPqf5BnoCGUMH0oCIAAAAAElFTkSuQmCC" alt="WeChat Pay QR"><div><b>WeChat Pay</b></div><small>WeChat → Me → Services → Pay and Receive → QR Receive. Save the static code.</small></div></div></div></section>
+<section class="faq"><div class="wrap"><h2 style="text-align:center">FAQ</h2>
+<details><summary>How is this different from fortune-telling?</summary><p>Fortune-telling hands you an unchangeable verdict. XinJing hands you a position you can act from. It predicts no events or dates; it says &#x27;the image is thus — what does your heart say&#x27;, and returns the decision to you.</p></details>
+<details><summary>Do I need my birth time?</summary><p>For the full structure (ascendant, moon, houses, transits) yes, plus place. A date alone still works, but moon and ascendant will be approximate, and the page says so.</p></details>
+<details><summary>Will it tell me my fate is bad?</summary><p>No. Words like disaster, ruin, loss, enemies, or malefic aspects are forbidden. There is no bad placement in a chart — only parts you haven&#x27;t claimed yet.</p></details>
+<details><summary>Can it treat illness?</summary><p>No. This is reflection, not medicine, therapy, or diagnosis. For lasting distress, see a professional.</p></details>
+<details><summary>Why colours?</summary><p>Because astrology floats. Colour gives you something to do today: what to wear, what to put on your desk, how to change the light. One action at a time.</p></details>
+<details><summary>Is my data safe?</summary><p>Non-custodial: the script runs on your own machine, birth data is never logged or sent.</p></details>
+<details><summary>What if I&#x27;m in real pain?</summary><p>Then read this first: if you have thoughts of harming yourself, contact your local crisis line or go to an emergency room now. This method does not handle crises.</p></details>
+</div></section>
+<section><div class="wrap"><div class="crisis">If you are considering harming yourself: contact your local crisis line now (US 988, UK 116 123, Japan 0570-783-910, Hong Kong 2382-0000). This page does not handle crises.</div><div class="red">Boundaries: no event or date prediction; no diagnosis; no dependency; this moment only — no past lives, no karma.</div></div></section>
+</div>
+<div class="lang-block" data-lang="ja">
+<section class="hero"><div class="wrap">
+<span class="tag">心鏡 · 心性観照</span>
+<h1>占いではありません。照心です。</h1>
+<p class="sub">実際の出生図を鏡として、いまの気持ち・恋・仕事を少しだけはっきり見る。そして今日できる行動をひとつ渡します。</p>
+<div class="cta"><a class="btn primary" href="https://workbuddy.link/p/YCFLmTTfBZVVp4uozLuhlW">無料セルフチェック（誕生日だけで可）</a><a class="btn ghost" href="#pricing">価格</a></div>
+</div></section>
+<section><div class="wrap"><h2 style="text-align:center">五家の分担 · 一段落に一家だけ</h2><div class="mirrors"><div class="mirror west"><h3>🌍 西洋星盘</h3><p>行星 · 宫位 · 相位 · 行运<br>Swiss Ephemeris 真实计算</p></div><div class="mirror"><h3>☯ 紫微斗数</h3><p>十二宫 · 十四主星 · 四化<br>iztro 内核 · 中性意象</p></div></div></div></section>
+<section><div class="wrap"><div class="cards c3">
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">図は鏡であって、判決ではありません。</p></div>
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">心鏡観照法：星図で構造を映し（象）、陽明学で主体性を取り戻し（心）、今日できる一つの行動に落とす（行）。</p></div>
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">出来事を予言しません。変えられない結論も出しません。答えるのは一つだけ——いま、あなたの心はどこにあるか。</p></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="text-align:center">六歩 · 一回の観照</h2><p class="lead" style="text-align:center"></p><div class="steps">
+<div class="step"><div>収：最後まで聴く。急いで分類しない。</div></div>
+<div class="step"><div>起·定：まず鎮めてから、口を開く。</div></div>
+<div class="step"><div>観·象：星図を客観構造として。</div></div>
+<div class="step"><div>照·心：気持ち / 恋 / 仕事、それぞれ「象 → 心 → 一言」。</div></div>
+<div class="step"><div>明·理：良知への一問。聞いたら黙る。</div></div>
+<div class="step"><div>行·合：今日できる行動をひとつ。</div></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="text-align:center">五家の分担 · 一段落に一家だけ</h2><div class="cards c5">
+<div class="card school"><h3>骨 · 陽明学</h3><p>致良知・知行合一。主体性をあなたに返す。</p></div>
+<div class="card school"><h3>鏡 · 仏教</h3><p>苦と執、無常、慈悲。業報・前世は語らない。</p></div>
+<div class="card school"><h3>勢 · 道</h3><p>陰陽の消長、有余を損じて不足を補う。落点は足すことではなく減らすこと。</p></div>
+<div class="card school"><h3>象 · 星図 / 紫微</h3><p>客観構造：星図と紫微命盤。運命ではない。</p></div>
+<div class="card school"><h3>色 · 色彩</h3><p>身体レベルの落点：服・机・画面・食・光。</p></div>
+</div></div></section>
+<section id="pricing"><div class="wrap"><h2 style="text-align:center">価格</h2><div class="price"><div class="pcard"><div style="color:var(--sub);font-size:13px;letter-spacing:1px">価格</div><div class="big">¥1.99 一回限りのライセンス</div><div class="note">海外：USDT 相当（ERC-20）</div><div class="mono" style="margin-top:12px">0xB811F660A20881b5BBee552085d6ddBE3e370E1a</div><div class="note">支払い後 activate.py を実行し、証憑（tx hash または WeChat 注文番号）を貼ると、ローカルに認証ファイルが書かれて解放されます。非托管・決済代行なし。</div></div><div class="qrbox"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeAQMAAABoqSz0AAAABlBMVEUbKy7///86NKudAAABOElEQVR42u1YwQ0DIQyLygCMxOqMxABIaRyH/tpvfRLohILysSyfYzD/vrbd5m3qNg1ruE9f3HFu0XzZj/WPJtAGMOK0PqNuqF0X7bJAmJiNaINqcbSBcPe5QxJPQHsYnurcpm551NctPSHp5SftCVwwhMNq2ZuqbtNvPf4yFJ+jJrcr9kkZfApZJexQaWl1po85JprsX9YhWoIM2FHAx6T9lt5lu2aEKes26N0ICZUTmrASwCS9a6GIo3UX55ZQ/ehWl1tCzcSYunXlWQZiSwZFclPOt0zjdXFAAFPWLSJi92K1al3dtjMUwg1Ctxxqrp3BjlxhuVSycr7NS9k8qcZc/O6AfFtuIJ8TBp8UaLbS7wkHbdrCyDymz60x1voTdLvzVk6/lU7j6Qnk9uxD3G/vu+ZtPqf5BnoCGUMH0oCIAAAAAElFTkSuQmCC" alt="WeChat Pay QR"><div><b>WeChat Pay</b></div><small>WeChat → 自分 → サービス → 收付款 → QR收款。静的コードを保存。</small></div></div></div></section>
+<section class="faq"><div class="wrap"><h2 style="text-align:center">よくある質問</h2>
+<details><summary>占いと何が違うのですか？</summary><p>占いは変えられない結論を渡します。心鏡は行動できる位置を渡します。出来事や日付は予言せず、「象はこう、心はどうか」だけを言い、決定権をあなたに返します。</p></details>
+<details><summary>出生時刻は必要ですか？</summary><p>完全な構造（アセンダント・月・ハウス・運行）には時刻と場所が必要です。日付だけでも動きますが、月とアセンダントは概算になり、その旨を明示します。</p></details>
+<details><summary>「運が悪い」と言われますか？</summary><p>言いません。凶・災・破財・小人・刑冲克害といった語は禁止です。星図に悪い配置はありません。まだ受け取っていない部分があるだけです。</p></details>
+<details><summary>病気は治せますか？</summary><p>治せません。これは医療・心理療法・診断ではありません。つらさが続くなら専門家へ。</p></details>
+<details><summary>なぜ色？</summary><p>星の話は浮きやすいからです。色なら今日できる：何を着るか、机に何を置くか、光をどう変えるか。一度にひとつだけ。</p></details>
+<details><summary>データは安全ですか？</summary><p>非托管です。スクリプトはあなたの端末で動き、出生情報はログにも外部にも出ません。</p></details>
+<details><summary>つらいときにも使えますか？</summary><p>使えますが、まずこれを：自分を傷つける考えがあるなら、今すぐ地元の相談窓口か救急へ。この方法は危機に対応しません。</p></details>
+</div></section>
+<section><div class="wrap"><div class="crisis">自傷の考えがある方へ：今すぐ相談窓口へ（日本 0570-783-910 / いのちの電話 0570-783-910、米国 988、香港 2382-0000）。本ページは危機対応を行いません。</div><div class="red">境界：出来事と日付の予言はしない／診断しない／依存させない／語るのは今だけ、前世や業報は語らない。</div></div></section>
+</div>
+<div class="lang-block" data-lang="ko">
+<section class="hero"><div class="wrap">
+<span class="tag">심경 · 마음 비추기</span>
+<h1>점이 아닙니다. 비춤입니다.</h1>
+<p class="sub">실제 출생 천궁도를 거울로 삼아, 지금의 마음·사랑·일을 조금 더 또렷하게 봅니다. 그리고 오늘 할 수 있는 행동 하나를 건넵니다.</p>
+<div class="cta"><a class="btn primary" href="https://workbuddy.link/p/YCFLmTTfBZVVp4uozLuhlW">무료 자기점검 (생년월일만)</a><a class="btn ghost" href="#pricing">가격</a></div>
+</div></section>
+<section><div class="wrap"><h2 style="text-align:center">다섯 집안의 분담 · 한 단락엔 한 집안만</h2><div class="mirrors"><div class="mirror west"><h3>🌍 西洋星盘</h3><p>行星 · 宫位 · 相位 · 行运<br>Swiss Ephemeris 真实计算</p></div><div class="mirror"><h3>☯ 紫微斗数</h3><p>十二宫 · 十四主星 · 四化<br>iztro 内核 · 中性意象</p></div></div></div></section>
+<section><div class="wrap"><div class="cards c3">
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">천궁도는 거울이지 판결문이 아닙니다.</p></div>
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">심경 관조법: 천궁도로 구조를 비추고(상), 양명학으로 주도권을 돌려주고(심), 오늘 할 행동 하나로 내려놓는다(행).</p></div>
+<div class="card"><p style="font-size:15.5px;color:var(--ink)">사건을 예측하지 않습니다. 바꿀 수 없는 결론도 주지 않습니다. 묻는 것은 하나——지금, 네 마음이 어디 있는가.</p></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="text-align:center">여섯 걸음 · 한 번의 관조</h2><p class="lead" style="text-align:center"></p><div class="steps">
+<div class="step"><div>收: 끝까지 듣는다. 서둘러 분류하지 않는다.</div></div>
+<div class="step"><div>起·定: 먼저 가라앉힌 뒤에 입을 연다.</div></div>
+<div class="step"><div>觀·象: 천궁도를 객관적 구조로.</div></div>
+<div class="step"><div>照·心: 마음 / 사랑 / 일, 각각 &#x27;상 → 심 → 한 줄&#x27;.</div></div>
+<div class="step"><div>明·理: 양지에 묻는 한 질문. 묻고 나면 입을 닫는다.</div></div>
+<div class="step"><div>行·合: 오늘 할 수 있는 행동 하나.</div></div>
+</div></div></section>
+<section><div class="wrap"><h2 style="text-align:center">다섯 집안의 분담 · 한 단락엔 한 집안만</h2><div class="cards c5">
+<div class="card school"><h3>뼈 · 양명학</h3><p>치양지·지행합일. 주도권을 너에게 돌려준다.</p></div>
+<div class="card school"><h3>거울 · 불교</h3><p>고와 집착, 무상, 자비. 업보와 전생은 말하지 않는다.</p></div>
+<div class="card school"><h3>흐름 · 도</h3><p>음양의 소장, 유여를 덜어 부족을 보탠다.落脚은 더함이 아니라 덜어냄.</p></div>
+<div class="card school"><h3>상 · 천궁도 / 자미두수</h3><p>객관적 구조: 천궁도와 자미두수. 운명이 아님.</p></div>
+<div class="card school"><h3>색 · 색채</h3><p>몸 단위의落脚: 옷·책상·화면·음식·빛.</p></div>
+</div></div></section>
+<section id="pricing"><div class="wrap"><h2 style="text-align:center">가격</h2><div class="price"><div class="pcard"><div style="color:var(--sub);font-size:13px;letter-spacing:1px">가격</div><div class="big">¥1.99 일회 라이선스</div><div class="note">해외: USDT 상당 (ERC-20)</div><div class="mono" style="margin-top:12px">0xB811F660A20881b5BBee552085d6ddBE3e370E1a</div><div class="note">결제 후 activate.py를 실행하고 증빙(tx hash 또는 위챗 주문번호)을 붙여넣으면 로컬 인증 파일이 쓰여 잠금이 풀립니다. 비수탁·결제 대행 없음.</div></div><div class="qrbox"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeAQMAAABoqSz0AAAABlBMVEUbKy7///86NKudAAABOElEQVR42u1YwQ0DIQyLygCMxOqMxABIaRyH/tpvfRLohILysSyfYzD/vrbd5m3qNg1ruE9f3HFu0XzZj/WPJtAGMOK0PqNuqF0X7bJAmJiNaINqcbSBcPe5QxJPQHsYnurcpm551NctPSHp5SftCVwwhMNq2ZuqbtNvPf4yFJ+jJrcr9kkZfApZJexQaWl1po85JprsX9YhWoIM2FHAx6T9lt5lu2aEKes26N0ICZUTmrASwCS9a6GIo3UX55ZQ/ehWl1tCzcSYunXlWQZiSwZFclPOt0zjdXFAAFPWLSJi92K1al3dtjMUwg1Ctxxqrp3BjlxhuVSycr7NS9k8qcZc/O6AfFtuIJ8TBp8UaLbS7wkHbdrCyDymz60x1voTdLvzVk6/lU7j6Qnk9uxD3G/vu+ZtPqf5BnoCGUMH0oCIAAAAAElFTkSuQmCC" alt="WeChat Pay QR"><div><b>위챗 페이</b></div><small>위챗 → 나 → 서비스 → 수금/결제 → QR 수금. 정적 코드를 저장.</small></div></div></div></section>
+<section class="faq"><div class="wrap"><h2 style="text-align:center">자주 묻는 질문</h2>
+<details><summary>점과 무엇이 다릅니까?</summary><p>점은 바꿀 수 없는 결론을 줍니다. 심경은 행동할 수 있는 자리를 줍니다. 사건과 날짜를 예측하지 않고, &#x27;상은 이렇다—마음은 어떤가&#x27;만 말한 뒤 결정권을 돌려줍니다.</p></details>
+<details><summary>태어난 시각이 필요한가요?</summary><p>완전한 구조(상승궁·달·하우스·운행)에는 시각과 장소가 필요합니다. 날짜만으로도 작동하지만 달과 상승궁은 근사값이 되고, 그 사실을 명시합니다.</p></details>
+<details><summary>&#x27;운이 나쁘다&#x27;고 하나요?</summary><p>하지 않습니다. 흉·재·파재·소인·형충극해 같은 말은 금지입니다. 천궁도에 나쁜 배치는 없습니다. 아직 받아들이지 않은 부분이 있을 뿐입니다.</p></details>
+<details><summary>병을 고칠 수 있나요?</summary><p>없습니다. 이는 의료·심리치료·진단이 아닙니다. 고통이 이어지면 전문가를 찾으세요.</p></details>
+<details><summary>왜 색인가요?</summary><p>별 이야기는 뜨기 쉽습니다. 색은 오늘 할 수 있습니다: 무엇을 입을지, 책상에 무엇을 둘지, 빛을 어떻게 바꿀지. 한 번에 하나만.</p></details>
+<details><summary>데이터는 안전한가요?</summary><p>비수탁입니다. 스크립트는 네 기기에서 돌고 출생 정보는 로그에도 외부에도 나가지 않습니다.</p></details>
+<details><summary>너무 힘들 때도 쓸 수 있나요?</summary><p>쓸 수 있지만 먼저 이것을: 자신을 해칠 생각이 있다면 지금 지역 위기상담 전화나 응급실로. 이 방법은 위기를 다루지 않습니다.</p></details>
+</div></section>
+<section><div class="wrap"><div class="crisis">자신을 해칠 생각이 있다면: 지금 지역 위기 상담 전화로 (한국 1588-9191 / 생명의전화 1588-9191, 미국 988, 일본 0570-783-910). 이 페이지는 위기를 다루지 않습니다.</div><div class="red">경계: 사건·날짜 예측 없음 / 진단 없음 / 의존 유도 없음 / 오직 지금만, 전생과 업보는 말하지 않음.</div></div></section>
+</div>
+<footer><div class="wrap">心镜 · XinJing Studio · 非托管 · 自结算</div></footer>
+<script>(function(){var b=document.querySelectorAll("#langs button");b.forEach(function(x){x.addEventListener("click",function(){var lg=x.dataset.lg;document.querySelectorAll(".lang-block").forEach(function(n){n.removeAttribute("data-show");if(n.dataset.lang===lg)n.setAttribute("data-show","");});b.forEach(function(y){y.classList.remove("on");});x.classList.add("on");window.scrollTo({top:0,behavior:"smooth"});});});})();</script>
+</body></html>
