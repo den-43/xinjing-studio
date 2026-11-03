@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vigil · 非托管链上监控 — Non-custodial On-chain Monitor</title>
+<meta name="description" content="Vigil：给你的 AI agent 或金库一双安全的链上眼睛。只读、非托管、范围锁定——监控余额骤降、转入异常、稳定币流向，但永不持有私钥、永不签名、永不动资金。">
+<meta name="keywords" content="Vigil,on-chain monitor,non-custodial,wallet monitor,stablecoin alert,agent safety,blockchain monitoring,USDT,链上监控,非托管">
+<link rel="canonical" href="https://den-43.github.io/xinjing-studio/vigil.html">
+<meta property="og:title" content="Vigil · 非托管链上监控">
+<meta property="og:description" content="只读、非托管、范围锁定。给你的 AI agent 一双安全的链上眼睛。">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vigil Studio","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows, Docker","description":"Non-custodial, read-only on-chain monitoring for AI agents and treasuries. Tracks balance drops, drain attempts, high-frequency activity and stablecoin movement without ever holding a key.","offers":{"@type":"Offer","price":"1.99","priceCurrency":"CNY","description":"一次性授权（代码 MIT 免费）"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Vigil 会持有我的私钥吗？","acceptedAnswer":{"@type":"Answer","text":"不会。Vigil 只接受公开地址，只读调用 eth_getBalance / balanceOf / getLogs。它永不签名、永不发送、永不做授权，私钥/助记词/keystore 一律拒绝。"}},
+{"@type":"Question","name":"能监控哪些异常？","acceptedAnswer":{"@type":"Answer","text":"余额骤降（≥30%）、稳定币骤降、单笔大额转出（≥1 ETH）、交易频率异常飙升。规则可审计，每次运行写 JSON 报告与告警日志。"}},
+{"@type":"Question","name":"AI agent 能安全用它吗？","acceptedAnswer":{"@type":"Answer","text":"可以。Vigil 把 agent 能接触的范围锁死在你列出的 scope_wallets 里，范围外一律拒绝。agent 得到结构化实时可见性，但永远无法据此行动。"}}]}
+</script>
+<style>
+:root{--bg:#0a1419;--bg2:#0e2128;--card:rgba(20,38,44,.72);--line:rgba(127,214,196,.18);
+--ink:#eaf4f2;--sub:#9fc0bd;--acc:#7fd6c4;--acc2:#e8b04b;--warn:#ef9a8a;--soft:#bfe3da;--shadow:0 18px 50px rgba(0,0,0,.45)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Noto Sans CJK",sans-serif;color:var(--ink);line-height:1.78;-webkit-font-smoothing:antialiased;
+background:radial-gradient(900px 480px at 82% -10%,rgba(127,214,196,.16),transparent 60%),radial-gradient(700px 420px at 10% 8%,rgba(232,176,75,.10),transparent 55%),linear-gradient(180deg,var(--bg),var(--bg2));background-attachment:fixed;min-height:100vh}
+a{color:var(--acc);text-decoration:none}.wrap{max-width:920px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);background:rgba(10,20,25,.66);border-bottom:1px solid var(--line);padding:14px 0}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-weight:800;letter-spacing:.5px;font-size:18px;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.langs{display:flex;gap:8px;flex-wrap:wrap}.langs button{background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--sub);border-radius:99px;padding:6px 13px;cursor:pointer;font:inherit;font-size:13px;transition:.2s}
+.langs button:hover{border-color:var(--acc);color:var(--ink)}.langs button.on{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#06201c;border-color:transparent;font-weight:700}
+section{padding:54px 0}.hero{padding:64px 0 30px;text-align:center}
+.tag{display:inline-block;font-size:12.5px;color:var(--acc);border:1px solid var(--line);border-radius:99px;padding:5px 14px;margin-bottom:22px;letter-spacing:1px}
+h1{font-size:clamp(34px,6vw,54px);line-height:1.18;margin-bottom:18px;font-weight:850;background:linear-gradient(120deg,#eaf4f2,var(--acc) 55%,var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--sub);font-size:clamp(16px,2.4vw,19px);max-width:660px;margin:0 auto 30px}
+.cta{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}.btn{display:inline-block;padding:13px 26px;border-radius:12px;font-weight:700;font-size:15px;transition:.2s}
+.btn.primary{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#06201c;box-shadow:0 10px 30px rgba(127,214,196,.28)}.btn.primary:hover{transform:translateY(-2px)}
+.btn.ghost{border:1px solid var(--line);color:var(--ink)}.btn.ghost:hover{border-color:var(--acc)}
+h2{font-size:clamp(24px,4vw,32px);margin-bottom:8px;font-weight:800}.lead{color:var(--sub);max-width:640px;margin:0 auto 34px}
+.cards{display:grid;gap:16px}.cards.c2{grid-template-columns:1fr 1fr}.cards.c3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.card h3{font-size:17px;margin-bottom:8px;color:var(--soft)}.card p{color:var(--sub);font-size:14.5px}
+.pill{display:inline-block;font-size:12px;color:var(--acc);border:1px solid var(--line);border-radius:8px;padding:3px 9px;margin:3px 4px 0 0}
+table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14.5px}
+td,th{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+th{background:rgba(20,38,44,.9);color:var(--acc);font-weight:600}
+tr.high td:first-child{color:var(--warn);font-weight:700}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+.pcard{background:linear-gradient(160deg,rgba(127,214,196,.12),rgba(20,38,44,.8));border:1px solid var(--acc);border-radius:20px;padding:28px;box-shadow:var(--shadow)}
+.pcard .big{font-size:28px;font-weight:850;margin:6px 0;color:var(--acc2)}.pcard .note{color:var(--sub);font-size:14px;margin-top:8px}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:13px;word-break:break-all;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--soft);display:inline-block}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";color:var(--acc);font-size:20px;font-weight:700}
+.faq details[open] summary::after{content:"–"}.faq p{padding:0 0 16px;color:var(--sub);font-size:14.5px}
+.crisis{background:rgba(239,154,138,.10);border:1px solid rgba(239,154,138,.35);border-radius:16px;padding:20px 22px;color:var(--warn);font-size:14.5px}
+.red{margin-top:18px;color:var(--sub);font-size:13.5px;text-align:center}
+footer{padding:40px 0 60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--line);margin-top:30px}
+.lang-block:not([data-show]){display:none}
+@media(max-width:720px){.cards.c2,.cards.c3,.price{grid-template-columns:1fr}section{padding:42px 0}}
+</style></head><body>
+<header><div class="wrap bar"><span class="brand">Vigil · 链上监控</span>
+<div class="langs" id="langs"><button data-lg="zh-CN" class="on">简体</button><button data-lg="en">EN</button></div></div></header>
+
+<div class="lang-block" data-lang="zh-CN" data-show><section class="hero"><div class="wrap">
+<span class="tag">非托管 · 只读 · 范围锁定</span>
+<h1>给你的 AI agent<br>一双安全的链上眼睛</h1>
+<p class="sub">监控余额骤降、转入异常、稳定币流向——但 Vigil 永不持有私钥、永不签名、永不挪动资金。它是 agent 能安全使用的链上可见性工具。</p>
+<div class="cta"><a class="btn primary" href="https://vigil-onchain-monitor.app.workbuddy.host/">看公开看板 →</a>
+<a class="btn ghost" href="#pricing">定价</a></div></div></section>
+
+<section><div class="wrap"><h2 style="text-align:center">为什么需要 Vigil</h2>
+<p class="lead" style="text-align:center">AI agent 越来越需要「看见」链上状态——金库健康、到账异常、盗转检测——但绝不能被授予签名权。把私钥交给 agent，就是资金被转走的开始。</p>
+<div class="cards c3">
+<div class="card"><h3>🌿 只读即正义</h3><p>只调用 <span class="mono" style="font-size:11px">eth_getBalance / balanceOf / getLogs</span>。无签名、无发送、无授权。</p></div>
+<div class="card"><h3>🔒 范围锁定</h3><p>只碰你在 <code>scope_wallets.txt</code> 列出的地址，其余一律拒绝。</p></div>
+<div class="card"><h3>🚫 无密钥</h3><p>只接受公开地址。误贴私钥或助记词会被直接拒绝。</p></div>
+</div></div></section>
+
+<section><div class="wrap"><h2 style="text-align:center">能力</h2>
+<div class="cards c2">
+<div class="card"><h3>稳定币感知</h3><p>追踪 USDT / USDC / DAI 余额与每日流入，异常即告警。</p><span class="pill">零依赖</span><span class="pill">Python 3.8+</span></div>
+<div class="card"><h3>Agent 就绪</h3><p><code>--json</code> 输出 + <code>probe</code> 子命令，契约见 AGENT.md。</p><span class="pill">可自托管</span><span class="pill">Docker</span></div>
+<div class="card"><h3>可审计</h3><p>每次运行写 JSON 报告 + 追加告警日志，过程留痕。</p><span class="pill">透明</span></div>
+<div class="card"><h3>公开看板</h3><p>付费客户地址 15 分钟内进入监控，公开看板可查。</p><span class="pill">15-min SLA</span></div>
+</div></div></section>
+
+<section><div class="wrap"><h2 style="text-align:center">异常规则</h2>
+<table><tr><th>规则</th><th>触发条件</th><th>级别</th></tr>
+<tr class="high"><td>BALANCE_DROP</td><td>ETH 余额较基线降 ≥ 30%</td><td>high</td></tr>
+<tr class="high"><td>TOKEN_DROP</td><td>USDT/USDC/DAI 余额降 ≥ 30%（基线 ≥ 1）</td><td>high</td></tr>
+<tr class="high"><td>LARGE_OUTGOING</td><td>单笔原生转出 ≥ 1 ETH</td><td>high</td></tr>
+<tr><td>TX_VELOCITY</td><td>交易计数较基线升 ≥ 50</td><td>medium</td></tr></table></div></section>
+
+<section id="pricing"><div class="wrap"><h2 style="text-align:center">定价</h2>
+<div class="price">
+<div class="pcard"><div style="color:var(--sub);font-size:13px;letter-spacing:1px">自托管</div>
+<div class="big">免费 · MIT</div><div class="note">源码永久免费，GitHub 自取。Docker 一键起。</div>
+<div style="margin-top:10px"><span class="pill">Watcher $5/地址/月</span><span class="pill">Pro $10/地址/月</span></div>
+<div class="note" style="margin-top:8px">监控订阅按地址计费；付费客户享 15 分钟 SLA。</div></div>
+<div class="pcard"><div style="color:var(--sub);font-size:13px;letter-spacing:1px">付费 Skill</div>
+<div class="big">¥1.99 一次性</div><div class="note">便捷安装 + 维护支持授权。安装后运行 activate.py 完成授权。</div>
+<div class="note" style="margin-top:8px">结算直接到你账户，平台只分发。</div>
+<div class="mono" style="margin-top:10px">0xB811F660A20881b5BBee552085d6ddBE3e370E1a</div>
+<div class="note" style="margin-top:6px">USDT (ERC-20) 等值结算。</div></div>
+</div></div></section>
+
+<section class="faq"><div class="wrap"><h2 style="text-align:center">常见问题</h2>
+<details><summary>Vigil 会持有我的私钥吗？</summary><p>不会。Vigil 只接受公开地址，只读调用 eth_getBalance / balanceOf / getLogs。它永不签名、永不发送、永不做授权，私钥/助记词/keystore 一律拒绝。</p></details>
+<details><summary>能监控哪些异常？</summary><p>余额骤降（≥30%）、稳定币骤降、单笔大额转出（≥1 ETH）、交易频率异常飙升。规则可审计，每次运行写 JSON 报告与告警日志。</p></details>
+<details><summary>AI agent 能安全用它吗？</summary><p>可以。Vigil 把 agent 能接触的范围锁死在你列出的 scope_wallets 里，范围外一律拒绝。agent 得到结构化实时可见性，但永远无法据此行动。</p></details>
+</div></section>
+
+<section><div class="wrap"><div class="crisis">红线：非托管、只读。所有页面/文档/仓库/聊天中，私钥、助记词、keystore 永不出现。</div>
+<div class="red">Vigil Studio · non-custodial · read-only · self-hostable · MIT</div></div></section></div>
+
+<div class="lang-block" data-lang="en"><section class="hero"><div class="wrap">
+<span class="tag">Non-custodial · Read-only · Scope-locked</span>
+<h1>Safe on-chain eyes<br>for your AI agent</h1>
+<p class="sub">Watch balance drops, drain attempts and stablecoin flows — but Vigil never holds a key, never signs, never moves funds. It is on-chain visibility an agent can use safely.</p>
+<div class="cta"><a class="btn primary" href="https://vigil-onchain-monitor.app.workbuddy.host/">Open public dashboard →</a>
+<a class="btn ghost" href="#pricing">Pricing</a></div></div></section>
+
+<section><div class="wrap"><h2 style="text-align:center">Why Vigil</h2>
+<p class="lead" style="text-align:center">Agents increasingly need to see on-chain state — treasury health, payout anomalies, drain detection — but must never be given signing power. Giving an agent a private key is how funds get drained.</p>
+<div class="cards c3">
+<div class="card"><h3>🌿 Read-only by design</h3><p>Only <span class="mono" style="font-size:11px">eth_getBalance / balanceOf / getLogs</span>. No signing, no sending, no approvals.</p></div>
+<div class="card"><h3>🔒 Scope-locked</h3><p>Touches only addresses you list in <code>scope_wallets.txt</code>; everything else is rejected.</p></div>
+<div class="card"><h3>🚫 Key-free</h3><p>Accepts public addresses only. Paste a private key by mistake and it is refused.</p></div>
+</div></div></section>
+
+<section><div class="wrap"><h2 style="text-align:center">Capabilities</h2>
+<div class="cards c2">
+<div class="card"><h3>Stablecoin-aware</h3><p>Tracks USDT / USDC / DAI balances & daily inflow; alerts on anomaly.</p><span class="pill">Zero deps</span><span class="pill">Python 3.8+</span></div>
+<div class="card"><h3>Agent-ready</h3><p><code>--json</code> output + <code>probe</code> subcommand; contract in AGENT.md.</p><span class="pill">Self-host</span><span class="pill">Docker</span></div>
+<div class="card"><h3>Auditable</h3><p>Each run writes a JSON report + appended alert log.</p><span class="pill">Transparent</span></div>
+<div class="card"><h3>Public dashboard</h3><p>Paying customers' addresses enter monitoring within 15 min; viewable publicly.</p><span class="pill">15-min SLA</span></div>
+</div></div></section>
+
+<section><div class="wrap"><h2 style="text-align:center">Anomaly rules</h2>
+<table><tr><th>Rule</th><th>Triggers when</th><th>Severity</th></tr>
+<tr class="high"><td>BALANCE_DROP</td><td>ETH balance down ≥ 30% vs baseline</td><td>high</td></tr>
+<tr class="high"><td>TOKEN_DROP</td><td>USDT/USDC/DAI down ≥ 30% (baseline ≥ 1)</td><td>high</td></tr>
+<tr class="high"><td>LARGE_OUTGOING</td><td>single native transfer ≥ 1 ETH</td><td>high</td></tr>
+<tr><td>TX_VELOCITY</td><td>tx count up ≥ 50 since baseline</td><td>medium</td></tr></table></div></section>
+
+<section id="pricing"><div class="wrap"><h2 style="text-align:center">Pricing</h2>
+<div class="price">
+<div class="pcard"><div style="color:var(--sub);font-size:13px;letter-spacing:1px">Self-host</div>
+<div class="big">Free · MIT</div><div class="note">Source free forever on GitHub. One-line Docker.</div>
+<div style="margin-top:10px"><span class="pill">Watcher $5/addr/mo</span><span class="pill">Pro $10/addr/mo</span></div>
+<div class="note" style="margin-top:8px">Monitoring billed per address; paying customers get 15-min SLA.</div></div>
+<div class="pcard"><div style="color:var(--sub);font-size:13px;letter-spacing:1px">Paid Skill</div>
+<div class="big">¥1.99 one-time</div><div class="note">Convenience install + maintenance support license. Run activate.py after install.</div>
+<div class="note" style="margin-top:8px">Settlement goes straight to your account; platform only distributes.</div>
+<div class="mono" style="margin-top:10px">0xB811F660A20881b5BBee552085d6ddBE3e370E1a</div>
+<div class="note" style="margin-top:6px">USDT (ERC-20) equivalent.</div></div>
+</div></div></section>
+
+<section class="faq"><div class="wrap"><h2 style="text-align:center">FAQ</h2>
+<details><summary>Does Vigil hold my private key?</summary><p>No. It accepts public addresses only and calls eth_getBalance / balanceOf / getLogs read-only. No signing, no sending, no approvals — private keys, seeds and keystores are always refused.</p></details>
+<details><summary>What anomalies can it catch?</summary><p>Balance drops (≥30%), stablecoin drops, large single outgoing transfers (≥1 ETH), and transaction-velocity spikes. Rules are auditable; every run writes a JSON report and alert log.</p></details>
+<details><summary>Is it safe for an AI agent?</summary><p>Yes. Vigil locks the agent's reachable scope to the addresses you list in scope_wallets; everything else is rejected. The agent gets structured real-time visibility but can never act on it.</p></details>
+</div></section>
+
+<section><div class="wrap"><div class="crisis">Red line: non-custodial, read-only. Private keys, seeds and keystores never appear in any page, doc, repo or chat.</div>
+<div class="red">Vigil Studio · non-custodial · read-only · self-hostable · MIT</div></div></section></div>
+
+<footer><div class="wrap">Vigil Studio · non-custodial · read-only · self-hostable · MIT<br>
+<a href="https://den-43.github.io/xinjing-studio/">姊妹产品：心镜 XinJing 心性观照 →</a></div></footer>
+<script>(function(){var b=document.querySelectorAll("#langs button");b.forEach(function(x){x.addEventListener("click",function(){var lg=x.dataset.lg;document.querySelectorAll(".lang-block").forEach(function(n){n.removeAttribute("data-show");if(n.dataset.lang===lg)n.setAttribute("data-show","");});b.forEach(function(y){y.classList.remove("on");});x.classList.add("on");window.scrollTo({top:0,behavior:"smooth"});});});})();</script>
+</body></html>
